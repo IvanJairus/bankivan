@@ -2,7 +2,7 @@
 
 FROM python:3.10.3
 
-ENV PYTHONUNBUFFERED 1
+# ENV PYTHONUNBUFFERED 1
 
 # RUN mkdir /main
 
@@ -19,6 +19,8 @@ COPY . .
 # RUN pip install --upgrade 
 
 # COPY . /main
-# EXPOSE 5000
+ENV PORT = 5000
+
+EXPOSE 5000
 
 CMD [ "python3", "-m" , "flask", "run", "--host=0.0.0.0"]
