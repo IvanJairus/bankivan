@@ -34,8 +34,8 @@ def add_user():
                 return not_found()
 
         except Exception as e:
-            handle_exception(e)
-
+            # handle_exception(e)
+            print('a')
             # Don't stop the stream, just ignore the duplicate.
 
     except Exception as e:
@@ -45,7 +45,7 @@ def add_user():
         conn.close()
 
 
-@app.route('/users')
+@app.route('/')
 def users():
     try:
         conn = mysql.connect()
@@ -139,19 +139,19 @@ def not_found(error=None):
     resp.status_code = 404
     return resp
 
-@app.errorhandler(HTTPException)
-def handle_exception(e):
-    """Return JSON instead of HTML for HTTP errors."""
-    # start with the correct headers and status code from the error
-    response = e.get_response()
-    # replace the body with JSON
-    response.data = json.dumps({
-        "code": e.code,
-        # "name": e.name,
-        "description": 'No. KTP sudah ada.',
-    })
-    response.content_type = "application/json"
-    return response
+# @app.errorhandler(HTTPException)
+# def handle_exception(e):
+#     """Return JSON instead of HTML for HTTP errors."""
+#     # start with the correct headers and status code from the error
+#     response = e.get_response()
+#     # replace the body with JSON
+#     response.data = json.dumps({
+#         "code": e.code,
+#         # "name": e.name,
+#         "description": 'No. KTP sudah ada.',
+#     })
+#     response.content_type = "application/json"
+#     return response
 
 if __name__ == "__main__":
     app.run()
