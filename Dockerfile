@@ -33,5 +33,5 @@ RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
 COPY . /newfolder
-EXPOSE 5000
+EXPOSE 5001
 CMD [ "python", "main.py" ]
