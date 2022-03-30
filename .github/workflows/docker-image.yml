@@ -21,9 +21,9 @@ jobs:
       run: | 
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name : Build the Docker image
-      run : docker build . --file Dockerfile --tag ivanjairus/bank-ivan:latest
+      run : docker build . --file Dockerfile --tag ivanjairus/bank-ivanj:latest
   
     - name: Docker Push
-      run : docker push ${{secrets.DOCKER_USER}}/bank-ivan
+      run : docker push ${{secrets.DOCKER_USER}}/bank-ivanj
       
    
